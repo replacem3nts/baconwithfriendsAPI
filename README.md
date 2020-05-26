@@ -9,3 +9,9 @@ METHOD  |        API LINK                   |   HEADER MUST CONTAIN         |   
 GET     |   http://127.0.0.1:3000/login     |   Valid username and password |   User Information
 DELETE  |   http://127.0.0.1:3000/users/:id |   User ID                     |   "User Destroyed"
 POST    |   http://127.0.0.1:3000/users     |   User Info                   |   User Information
+
+| METHOD | API LINK | HEADER MUST CONTAIN | RETURNS (if successful) |
+| ------- | --------------------- | -------------------- | ---------------|
+| GET | http://127.0.0.1:3000/login |   Valid username and password | User Information |
+| DELETE | http://127.0.0.1:3000/users/:id | User ID | "User Destroyed" |
+| POST | http://127.0.0.1:3000/users | User Info | User Information |
