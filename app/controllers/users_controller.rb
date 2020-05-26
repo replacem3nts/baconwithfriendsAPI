@@ -8,10 +8,10 @@ class UsersController < ApplicationController
         end
     end
 
-    def show
-        user = User.find(params[:id])
-        render json: user
-    end
+    # def show
+    #     user = User.find(params[:id])
+    #     render json: user
+    # end
 
     def login
         user = User.find_by(username: params[:username])
@@ -28,8 +28,12 @@ class UsersController < ApplicationController
 
     def destroy
         user = User.find(params[:id])
-        user.destroy
-        render json: {message: "User destroyed."}
+        if user
+            user.destroy
+            render json: {message: "User destroyed."}
+        else
+            render json: {message: "User was not found in database."}
+        end
     end
 
     private
