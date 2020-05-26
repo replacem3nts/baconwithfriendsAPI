@@ -2,21 +2,22 @@ class UsersController < ApplicationController
     def create
         user = User.create(user_params)
         if user.valid?
-            render json: user, status: 201
+            # render json: user, status: 201
+            render json: { user: UserSerializer.new(user) }, status: :created
         else
             render json: {message: "Username Taken"}, status: 403
         end
     end
 
-    # def show
-    #     user = User.find(params[:id])
-    #     render json: user
-    # end
+    def show
+        user = User.find(params[:id])
+        render json: { user: UserSerializer.new(user) }
+    end
 
     def login
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            render json: user
+            render json: { user: UserSerializer.new(user) }
         else
             render json: {message: "Incorrect username or password"}
         end
