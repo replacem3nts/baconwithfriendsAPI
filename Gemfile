@@ -48,3 +48,6 @@ gem "jwt", "~> 2.2"
 
 # Use this gem for generating random hexidecimal slugs for th Room attribute
 gem 'sysrandom'
+
+# Used to hide API keys
+gem 'figaro'
