@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_180814) do
+ActiveRecord::Schema.define(version: 2020_05_27_152824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_180814) do
     t.bigint "user_id", null: false
     t.integer "rank"
     t.integer "total_players"
+    t.integer "room"
     t.index ["user_id"], name: "index_game_records_on_user_id"
   end
 

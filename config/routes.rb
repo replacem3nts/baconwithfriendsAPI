@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :game_records
 
   get '/login', to: 'users#login'
+  get '/profile', to: 'users#profile'
+  post '/create_account', to: 'users#create'
+  patch '/change_username', to: 'users#update'
+  delete '/delete', to: 'users#destroy'
 
-  # post '/users/login', to 'users#login'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
