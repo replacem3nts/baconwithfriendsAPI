@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete '/delete_room/:id', to: 'rooms#destroy'
 
   # game_record routing
+  post '/create_game_record', to: 'game_records#create'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

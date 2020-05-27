@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   skip_before_action :authorized
 
   def create
-    slug = Sysrandom.hex(32)
+    slug = Sysrandom.hex(10)
     # Replace '1' with slug. Gem not working in this controller.
     room = Room.create(slug: slug)
     render json: {room: RoomSerializer.new(room)}
