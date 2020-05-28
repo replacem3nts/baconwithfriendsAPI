@@ -1,5 +1,5 @@
 class GameRecordsController < ApplicationController
-    skip_before_action :authorized
+    # skip_before_action :authorized
     
     def create
         record = GameRecord.create(game_record_params)
@@ -33,7 +33,7 @@ class GameRecordsController < ApplicationController
     private
 
     def game_record_params
-        params.require(:game_record).permit(:user_id, :rank, :total_players, :room)
+        params.permit(:user_id, :rank, :total_players, :room)
     end
 
 end

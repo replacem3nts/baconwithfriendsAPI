@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  skip_before_action :authorized
+  # skip_before_action :authorized
 
   def create
     slug = Sysrandom.hex(10)
