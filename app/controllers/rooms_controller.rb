@@ -3,9 +3,26 @@ class RoomsController < ApplicationController
 
   def create
     slug = Sysrandom.hex(10)
-    # Replace '1' with slug. Gem not working in this controller.
-    room = Room.create(slug: slug)
+    room = Room.create(slug: slug, name: params[:name])
     render json: {room: RoomSerializer.new(room)}
+  end
+
+  def index
+    rooms = Room.all
+    if rooms
+      render :json => rooms
+    else
+      render json: {message: "No rooms found."}
+    end
+  end
+
+  def show
+    room = Room.find(params[:id])
+    if room
+      render json: {room: RoomSerializer.new(room)}
+    else 
+      render json: {message: "Room not found."}
+    end
   end
 
   def destroy
