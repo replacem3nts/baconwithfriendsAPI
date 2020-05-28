@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         user = User.create(user_params)
         if user.valid?
             token = encode_token({user_id: user.id})
-            render json: { user: UserSerializer.new(user), jwt: token }, status: :created
+            render json: { user: UserSerializer.new(user), token: token }, status: :created
         else
             render json: {message: "Username Taken"}, status: 403
         end
@@ -15,14 +15,10 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             token = encode_token({ user_id: user.id })
-            render json: { user: UserSerializer.new(user), jwt: token }
+            render json: { user: UserSerializer.new(user), token: token }
         else
             render json: {message: "Incorrect username or password"}
         end
-    end
-
-    def profile
-        render json: { user: UserSerializer.new(@user) }
     end
 
     def update
@@ -37,6 +33,11 @@ class UsersController < ApplicationController
         else
             render json: {message: "User was not found in database."}
         end
+    end
+
+    def confirm_logged_in
+        wristband = encode_token({user_id: @user.id})
+        render json: { user: UserSerializer.new(@user), token: wristband }
     end
 
     private
