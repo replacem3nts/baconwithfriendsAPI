@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   # users_controller routing
   post '/login', to: 'users#login'
-  get '/profile', to: 'users#profile'
   post '/users', to: 'users#create'
-  patch '/profile', to: 'users#update'
+  patch '/users', to: 'users#update'
   delete '/delete', to: 'users#destroy'
+  get '/users/confirm_logged_in', to: 'users#confirm_logged_in'
 
   # rooms_controller routing
   post '/rooms', to: 'rooms#create'
