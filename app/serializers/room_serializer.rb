@@ -1,4 +1,4 @@
 class RoomSerializer < ActiveModel::Serializer
-    attributes :id, :slug
+    attributes :id, :name, :slug
 end
   
