@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :get_score
+  attributes :id, :username, :rating
 end

@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
 
   # users_controller routing
-  get '/login', to: 'users#login'
+  post '/login', to: 'users#login'
   get '/profile', to: 'users#profile'
-  post '/create_account', to: 'users#create'
-  patch '/change_username', to: 'users#update'
+  post '/users', to: 'users#create'
+  patch '/profile', to: 'users#update'
   delete '/delete', to: 'users#destroy'
 
   # rooms_controller routing
-  post '/create_room', to: 'rooms#create'
-  delete '/delete_room/:id', to: 'rooms#destroy'
+  post '/rooms', to: 'rooms#create'
+  delete '/rooms/:id', to: 'rooms#destroy'
 
   # game_record routing
-  post '/create_game_record', to: 'game_records#create'
+  post '/game_records', to: 'game_records#create'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
