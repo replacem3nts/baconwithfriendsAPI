@@ -31,7 +31,7 @@ class GameRecordsController < ApplicationController
     end
 
     def update
-        record = GameRecord.find(params[:id])
+        record = GameRecord.find_by(user_id: params[:user_id], room_id: params[:room_id])
         if record
             record.update(game_record_params)
             render json: record

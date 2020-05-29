@@ -6,7 +6,11 @@ class RoomsController < ApplicationController
     slug = Sysrandom.hex(6)
     room = Room.create(slug: slug, name: params[:name])
     ActionCable.server.broadcast('play_channel', {room: RoomSerializer.new(room)})
-    render json: {room: RoomSerializer.new(room)}
+    if room.valid?
+      render json: {room: RoomSerializer.new(room)}
+    else
+      render json: {message: "Room not created."}
+    end
   end
 
   def index
