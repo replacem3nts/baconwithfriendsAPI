@@ -1,5 +1,5 @@
 class AddRoomToGameRecords < ActiveRecord::Migration[6.0]
   def change
-    add_column :game_records, :room, :integer
+    add_reference :game_records, :room, null: false, foreign_key: true
   end
 end

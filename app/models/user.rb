@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :game_records
     validates_uniqueness_of :username
 
+
     def rating
         added_ranks = GameRecord.raw_score(self.id)
         total_played = GameRecord.total_played(self.id)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_28_203128) do
+ActiveRecord::Schema.define(version: 2020_05_29_054021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 2020_05_28_203128) do
     t.bigint "user_id", null: false
     t.integer "rank"
     t.integer "total_players"
-    t.integer "room"
+    t.bigint "room_id", null: false
+    t.index ["room_id"], name: "index_game_records_on_room_id"
     t.index ["user_id"], name: "index_game_records_on_user_id"
   end
 
@@ -37,5 +38,6 @@ ActiveRecord::Schema.define(version: 2020_05_28_203128) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "game_records", "rooms"
   add_foreign_key "game_records", "users"
 end
