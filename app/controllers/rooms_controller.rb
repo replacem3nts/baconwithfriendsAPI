@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
-  # skip_before_action :authorized
+  skip_before_action :authorized, only: [:show]
+# THE ABOVE SKIP BEFORE ACTION IS JUST FOR THE PURPOSES OF TESTING--WILL NEED TO IMPLEMENTED BEFORE DEPLOYING
 
   def create
     slug = Sysrandom.hex(6)
