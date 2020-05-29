@@ -2,11 +2,11 @@ class GameRecordsController < ApplicationController
     # skip_before_action :authorized
     
     def create
-        record = GameRecord.create(game_record_params)
-        if record
+        record = GameRecord.create(params.permit(:user_id, :room_id))
+        if record.valid?
             render json: record
         else
-            render json: { message: "Record NOT created." }
+            render json: { message: "Record NOT created. User or Room may not exist" }
         end
     end
 
@@ -30,10 +30,20 @@ class GameRecordsController < ApplicationController
         end
     end
 
+    def update
+        record = GameRecord.find(params[:id])
+        if record
+            record.update(game_record_params)
+            render json: record
+        else
+            render json: {message: "Game Record not found."}
+        end
+    end
+
     private
 
     def game_record_params
-        params.permit(:user_id, :rank, :total_players, :room)
+        params.permit(:user_id, :rank, :total_players, :room_id)
     end
 
 end

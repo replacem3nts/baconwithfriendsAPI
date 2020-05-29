@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # game_record routing
   get '/game_records/:id', to: 'game_records#user_records'
+  patch '/game_records/:id', to: 'game_records#update'
   post '/game_records', to: 'game_records#create'
   delete '/game_records/:id', to: 'game_records#destroy'
 
