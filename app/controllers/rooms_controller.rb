@@ -54,7 +54,7 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.permit(:slug, :name)
+    params.permit(:roomopen, :lastanswer, :actoranswer, :whoseturn, :lastrank)
   end
 
 end
