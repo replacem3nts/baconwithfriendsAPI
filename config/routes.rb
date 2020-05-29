@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # rooms_controller routing
   post '/rooms', to: 'rooms#create'
+  patch '/rooms/:id', to: 'rooms#update'
   delete '/rooms/:id', to: 'rooms#destroy'
   get '/rooms', to: 'rooms#index'
   get '/rooms/:id', to: 'rooms#show'

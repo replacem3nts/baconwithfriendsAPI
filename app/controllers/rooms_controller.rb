@@ -45,7 +45,10 @@ class RoomsController < ApplicationController
     room = Room.find(params[:id])
     if room
       room.update(room_params)
-      render json: room
+      # byebug
+      RoomsChannel.broadcast_to(room, {room: RoomSerializer.new(room)})
+      # ActionCable.server.broadcast("rooms_channel", {room: RoomSerializer.new(room)})
+      render json: {room: RoomSerializer.new(room)}
     else
       render json: {message: "Room not found."}
     end
