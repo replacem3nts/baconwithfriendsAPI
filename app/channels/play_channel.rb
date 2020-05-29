@@ -5,6 +5,6 @@ class PlayChannel < ApplicationCable::Channel
   
   
     def unsubscribed
-
+        raise NotImplementedError
     end
   end
