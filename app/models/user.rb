@@ -7,6 +7,10 @@ class User < ApplicationRecord
     def rating
         added_ranks = GameRecord.raw_score(self.id)
         total_played = GameRecord.total_played(self.id)
-        return added_ranks / total_played
+        if total_played == 0
+            return 0
+        else
+            return added_ranks / total_played
+        end
     end
 end
