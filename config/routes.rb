@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   post '/game_records', to: 'game_records#create'
   delete '/game_records/:id', to: 'game_records#destroy'
 
+  mount ActionCable.server => '/cable'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

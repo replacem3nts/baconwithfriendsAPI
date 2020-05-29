@@ -2,8 +2,9 @@ class RoomsController < ApplicationController
   # skip_before_action :authorized
 
   def create
-    slug = Sysrandom.hex(10)
+    slug = Sysrandom.hex(6)
     room = Room.create(slug: slug, name: params[:name])
+    ActionCable.server.broadcast('play_channel', {room: RoomSerializer.new(room)})
     render json: {room: RoomSerializer.new(room)}
   end
 
