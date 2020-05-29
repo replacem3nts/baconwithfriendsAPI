@@ -35,5 +35,21 @@ class RoomsController < ApplicationController
       render json: {message: "Room not found."}
     end
   end
-  
+
+  def update
+    room = Room.find(params[:id])
+    if room
+      room.update(room_params)
+      render json: room
+    else
+      render json: {message: "Room not found."}
+    end
+  end
+
+  private
+
+  def room_params
+    params.permit(:slug, :name)
+  end
+
 end
